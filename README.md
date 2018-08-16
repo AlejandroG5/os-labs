@@ -1,2 +1,0 @@
-# os-labs
-Lab practices
