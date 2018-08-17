@@ -1,0 +1,1 @@
+cmd_/home/alejandro/Desktop/os-labs/Lab1.4/simple.ko := ld -r -m elf_x86_64 -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/alejandro/Desktop/os-labs/Lab1.4/simple.ko /home/alejandro/Desktop/os-labs/Lab1.4/simple.o /home/alejandro/Desktop/os-labs/Lab1.4/simple.mod.o ;  true
