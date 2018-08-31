@@ -3,7 +3,7 @@ README
 -Open the command line 
 
 
--Go to the folder where is located "simple-shell.c" you downloaded.
+-Go to the folder where is located "simple-shell.c".
 	
 	command: cd /..../LOCATION
 
