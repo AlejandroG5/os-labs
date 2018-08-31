@@ -1,6 +1,6 @@
 README
 
--Open the command line
+-Open the command line "\n"
 -Go to the folder where is located "simple-shell.c" you downloaded.
 	command: cd /..../LOCATION
 -Compile program using gcc
