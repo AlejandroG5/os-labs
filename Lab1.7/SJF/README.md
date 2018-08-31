@@ -3,7 +3,7 @@ README
 -Open the command line 
 
 
--Go to the folder where is located "simple-process1.c" you downloaded.
+-Go to the folder where is located "simple-process1.c".
 	
 	command: cd /..../LOCATION
 
