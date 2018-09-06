@@ -24,6 +24,7 @@ void activateburst();
 
 process pg[10];
 process psjf[10];
+
 int size=sizeof(pg)/sizeof(process);
 int time1=0;
 int main(void){
