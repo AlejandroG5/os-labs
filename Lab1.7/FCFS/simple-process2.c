@@ -7,7 +7,6 @@
 #include <stdlib.h>
 
 enum state {IDLE,READY,WAIT,RUN};
-
 typedef struct{
 	int burst_time;
 	int id;
