@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <string.h>
+#include <time.h>
+#include <stdlib.h>
 
 
 enum state {IDLE,READY,WAIT,RUN};
@@ -23,26 +25,29 @@ void activateburst();
 process pg[10];
 process psjf[10];
 int size=sizeof(pg)/sizeof(process);
-int time=0;
+int time1=0;
 
 int main(void){
-	int m,a,b;
+	srand(time(NULL));
+	int m,a,b,i;
 	for(m=0;m<size;m++){
-		createprocess(m,100-m*6,1);
+		int p= rand()%50;
+		int bt= rand()%100;
+		createprocess(m,bt,p);
 	}
-	createprocess(3,2,1);
-	createprocess(5,10,1);
-	createprocess(7,99,1);
-	createprocess(1,56,1);
+	printf("Creatoion order: \n");
+	for(i=0;i<size;i++){
+		printf(" ID: %d STATE: %d burst time: %d sec waiting time: %d sec\n",pg[i].id , pg[i].state , pg[i].burst_time, pg[i].waiting_time);
+	}
 	insertionburst();
 	for(a=1;a<size;a++){
-		time+=pg[a-1].burst_time;
-		pg[a].waiting_time=time;
+		time1+=pg[a-1].burst_time;
+		pg[a].waiting_time=time1;
 	}
 	for(b=0;b<size;b++){
 		activateburst(b);
 	}
-	printf("Average wait time: %d\n",(time/size));
+	printf("Average wait time: %d\n",(time1/size));
 	return 0;
 	
 }
@@ -60,7 +65,7 @@ void activateburst(int b){
 	//........ FUNCTIONALITIES OF EACH PROCESS
 	printf("Running task no. %d\n", b);
 	for(i=0;i<size;i++){
-		printf(" ID: %d STATE: %d burst time: %d sec waiting time: %d sec\n",pg[i].id , pg[i].state , pg[i].burst_time, pg[i].waiting_time);
+		printf(" ID: %d STATE: %d priority: %d burst time: %d waiting time: %d sec\n",pg[i].id , pg[i].state , pg[i].priority, pg[i].burst_time,pg[i].waiting_time);
 	}
 	pg[b].state=IDLE;
 	printf("Finished task no. %d\n", b);
