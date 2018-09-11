@@ -81,7 +81,6 @@ void *runner(void *param)
 	long tid;
 	long titeration;
 	threads * t=param;
-	//printf("%d\n",thread1->number);
 	tid= (long)t->id;
 	titeration=(long)t->iteration;
 	printf("Hello from thread %ld - I was created in interation %ld\n", tid, titeration);
