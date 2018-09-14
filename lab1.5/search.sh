@@ -1,6 +1,6 @@
 #!/bin/bash
 direc='/home/alejandro/Desktop/src/*'
-output='/home/alejandro/Desktop/os-labs/Lab1.5/linux_source_structure.txt'
+output='/home/alejandro/Desktop/os-labs/lab1.5/linux_source_structure.txt'
 
 for dir in $direc; do
     if [ -d "$dir" ]; then
