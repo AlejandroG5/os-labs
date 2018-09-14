@@ -33,7 +33,7 @@ void activate();
 int pendingtasks();
 
 int main(void){
-	printf("Dame el numero de quantum: ");
+	printf("Introduce the quantum number: ");
 	fgets(args, MAX_LINE ,stdin);
 	quantum=atoi(args);
 	printf("%d\n",quantum);	
