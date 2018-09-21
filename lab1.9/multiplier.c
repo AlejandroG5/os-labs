@@ -162,6 +162,7 @@ long dotProduct(long * vec1, long * vec2){
 	return dotp;
 }
 
+
 int main (void){
 	int i;
 	long *matrixA,*matrixB,*matrixtest,*matrixtest2;
