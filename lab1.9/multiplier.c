@@ -75,17 +75,11 @@ void *runner(void *param){
 	while(-1==(mutex_id=getLock()));
 	long *row,*column;
 	p=(int) param;
-	//printf("hola %d \n",mutex_id);
-	//printf("hola %d \n",p);
+	//printf("hola %d  :",mutex_id);
 	row=malloc(NUM_ROWS*sizeof(long));
 	column=malloc(NUM_ROWS*sizeof(long));
 	memcpy(row,getRow(p,matrix1),NUM_ROWS*sizeof(long));
 	printf("%d \n",p);
-	/*for(k=0;k<NUM_ROWS;k++){
-		printf("%d    %ld \n",k,row[k]);
-	printf("%d \n",NUM_ROWS*p);
-	exit(0);
-	}*/	
 	for(h=0;h<NUM_ROWS;h++){
 		memcpy(column,getColumn(h,matrix2),NUM_ROWS*sizeof(long));
 		//printf("%ld \n",dotProduct(row,column));
@@ -128,7 +122,7 @@ long * getRow(int row, long * matrix){
 int getLock(){
 	int jl;
 	for(jl=0;jl<NUM_BUFFERS;jl++){
-		if(0==(pthread_mutex_lock(&mutexes[jl]))){
+		if(0==(pthread_mutex_trylock(&mutexes[jl]))){
 			return jl;
 		}
 	}
@@ -180,6 +174,7 @@ int main (void){
 	matrixtest2=malloc(NUM_ROWS*sizeof(long));
 	buffers=malloc(NUM_BUFFERS*sizeof(long*));
 	mutexes=malloc(NUM_BUFFERS*sizeof(pthread_mutex_t));
+	//printf("%d \n",NUM_BUFFERS);
 	for(i=0;i<NUM_BUFFERS;i++){
 		buffers[i]=malloc(NUM_ROWS*sizeof(long));
 	}
