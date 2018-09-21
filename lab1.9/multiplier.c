@@ -12,7 +12,7 @@
 #define A_PATH "matA.dat"
 #define B_PATH "matB.dat"
 #define nchar 255
-#define NUM_THREADS 50
+#define NUM_THREADS 10
 #define NUM_CYCLES NUM_ROWS/NUM_THREADS
 
 typedef struct {
