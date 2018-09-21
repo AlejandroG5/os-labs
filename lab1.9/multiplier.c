@@ -145,7 +145,13 @@ int releaseLock(int a){
 }
 
 int saveResultMatrix(long *result){
-
+	int j;
+	FILE *fp = fopen("result.dat","w");
+	for(j=0;j<NUM_DATA;j++){
+		fprintf(fp,"%ld\n",result[j]);
+	}
+	fclose(fp);
+	return 0;
 }
 
 long dotProduct(long * vec1, long * vec2){
@@ -188,9 +194,9 @@ int main (void){
 	memcpy(matrixtest2,getColumn(1999,matrixB),NUM_ROWS*sizeof(long));
 	printf("%ld \n",dotProduct(matrixtest2,matrixtest));
 	multiply(matrixA,matrixB);
+	memcpy(matrix_4m,mresult,NUM_DATA*sizeof(long));
+	saveResultMatrix(matrix_4m);
+	pthread_mutex_destroy(mutexes);
 	pthread_mutex_destroy(mutexes);
 }
-
-
-
 
