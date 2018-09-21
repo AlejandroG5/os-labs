@@ -12,7 +12,7 @@
 #define A_PATH "matA.dat"
 #define B_PATH "matB.dat"
 #define nchar 255
-#define NUM_THREADS 10
+#define NUM_THREADS 20
 #define NUM_CYCLES NUM_ROWS/NUM_THREADS
 
 typedef struct {
@@ -52,10 +52,11 @@ long * multiply(long * matA, long * matB){
 	memcpy(matrix1,matA,NUM_DATA*sizeof(long));
 	memcpy(matrix2,matB,NUM_DATA*sizeof(long));
 	limit=0;
+	k=0;
 	do{
 		for (j = 0; j<NUM_THREADS; j++){ 
 			pthread_create(&tid[j],&attr,runner,(void*)k);
-			//printf("%d \n",k);
+			printf("%d \n",k);
 			k++;
 		}
 		for (j = 0; j <NUM_THREADS; j++){ 
@@ -79,7 +80,7 @@ void *runner(void *param){
 	row=malloc(NUM_ROWS*sizeof(long));
 	column=malloc(NUM_ROWS*sizeof(long));
 	memcpy(row,getRow(p,matrix1),NUM_ROWS*sizeof(long));
-	printf("%d \n",p);
+	//printf("%d \n",p);
 	for(h=0;h<NUM_ROWS;h++){
 		memcpy(column,getColumn(h,matrix2),NUM_ROWS*sizeof(long));
 		//printf("%ld \n",dotProduct(row,column));
@@ -180,15 +181,21 @@ int main (void){
 	}
 	memcpy(matrixA,readMatrix(A_PATH),NUM_DATA*sizeof(long));
 	memcpy(matrixB,readMatrix(B_PATH),NUM_DATA*sizeof(long));
-	memcpy(matrixtest,getRow(0,matrixA),NUM_ROWS*sizeof(long));
-	memcpy(matrixtest2,getColumn(0,matrixB),NUM_ROWS*sizeof(long));
+/*	for(i=0;i<NUM_ROWS;i++){
+		printf("%ld \n",matrixA[i]);		
+	}
+	for(i=0;i<NUM_ROWS;i++){
+		printf("%ld \n",matrixB[i]);		
+	}*/
+//	memcpy(matrixtest,getRow(0,matrixA),NUM_ROWS*sizeof(long));
+//	memcpy(matrixtest2,getColumn(0,matrixB),NUM_ROWS*sizeof(long));
 	//memcpy(matrixtest,getRow(1999,matrixA),NUM_ROWS*sizeof(long));
-	printf("%ld \n",matrixA[0]);
-	printf("%ld \n",matrixB[0]);
-	printf("%ld \n",dotProduct(matrixtest,matrixtest2));
-	memcpy(matrixtest,getRow(1999,matrixA),NUM_ROWS*sizeof(long));
-	memcpy(matrixtest2,getColumn(1999,matrixB),NUM_ROWS*sizeof(long));
-	printf("%ld \n",dotProduct(matrixtest2,matrixtest));
+//	printf("%ld \n",matrixA[0]);
+//	printf("%ld \n",matrixB[0]);
+//	printf("%ld \n",dotProduct(matrixtest,matrixtest2));
+//	memcpy(matrixtest,getRow(1999,matrixA),NUM_ROWS*sizeof(long));
+//	memcpy(matrixtest2,getColumn(1999,matrixB),NUM_ROWS*sizeof(long));
+//	printf("%ld \n",dotProduct(matrixtest2,matrixtest));
 	multiply(matrixA,matrixB);
 	memcpy(matrix_4m,mresult,NUM_DATA*sizeof(long));
 	saveResultMatrix(matrix_4m);
