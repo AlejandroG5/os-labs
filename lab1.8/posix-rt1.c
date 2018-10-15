@@ -55,7 +55,7 @@ main(int argc, char *argv[])
 	}
 	
 	/* set the scheduling policy - FIFO, RT, or OTHER */
-	if (pthread_attr_setschedpolicy(&attr, SCHED_OTHER) != 0)
+	if (pthread_attr_setschedpolicy(&attr, SCHED_FIFO) != 0)
 		printf("unable to set scheduling policy to SCHED_OTHER \n");
 
 	/* create the threads */
