@@ -23,5 +23,5 @@ README
 
 -Clean .o files
 	
-	command: clean
+	command: make clean
 
