@@ -1,0 +1,16 @@
+Team:
+
+Alejandro Godoy Lee ------>Github:AlejandroG5
+
+David Emmanuel García Porras ------>Github:DavidG2897
+
+Ramón Eduardo Gradilla Negrete ------>Github:RG9b
+
+To compile:
+> gcc main.c -o main.o
+
+To execute:
+>./main.o addresses.txt
+
+Execution template
+>./main.o <input_filename>
