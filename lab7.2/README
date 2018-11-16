@@ -1,0 +1,22 @@
+README
+
+-Open the command line 
+
+
+-Go to the folder where is located "server3.c" and "client3.c".
+	
+	command: cd /..../LOCATION
+
+
+-Compile program using gcc
+	
+	command: gcc server3.c -o server3.o
+	command: gcc client3.c -o client3.o
+
+
+-Run the program
+	
+	command: ./server1.o &
+	command: ./client1.o <id> & ./client1.o <id> & ./client1.o <id> & ./client1.o <id> &
+	command: ./client1.o 1 & ./client1.o 52 & ./client1.o 37 & ./client1.o 40 &
+
